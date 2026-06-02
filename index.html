@@ -175,6 +175,12 @@
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             padding: 4px;
+            transition: transform 0.2s ease, cursor 0.1s;
+            cursor: pointer;
+        }
+        /* 鼠标悬停时图片轻微放大 */
+        .product-img:hover {
+            transform: scale(1.08);
         }
         .product-title {
             font-size: 1.2rem;
@@ -270,6 +276,42 @@
             z-index: 99;
             border: none;
         }
+        /* 图片全屏查看模态框样式 */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .image-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+        .close-modal-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            width: fit-content;
+            margin: 0 auto;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            pointer-events: none;
+        }
         @media (max-width: 780px) {
             .sidebar {
                 width: 100%;
@@ -347,6 +389,12 @@
 </div>
 <div class="chat-bubble" id="chatSupportBtn">
     <i class="fas fa-comment-dots"></i> 在线咨询
+</div>
+
+<!-- 图片全屏查看模态框 -->
+<div id="imageModal" class="image-modal" style="display: none;">
+    <img id="fullscreenImage" src="" alt="放大查看">
+    <div class="close-modal-hint">点击任意位置关闭</div>
 </div>
 
 <script>
@@ -453,6 +501,41 @@
 
     let currentCategory = "cfg";
 
+    // 获取模态框元素
+    const imageModal = document.getElementById('imageModal');
+    const fullscreenImage = document.getElementById('fullscreenImage');
+
+    // 显示大图
+    function showFullImage(imgSrc) {
+        if (imgSrc) {
+            fullscreenImage.src = imgSrc;
+            imageModal.style.display = 'flex';
+        }
+    }
+
+    // 隐藏大图
+    function hideFullImage() {
+        imageModal.style.display = 'none';
+        fullscreenImage.src = ''; // 清除避免残留
+    }
+
+    // 为图片绑定点击放大事件（动态渲染后调用）
+    function bindImageClick() {
+        const allImages = document.querySelectorAll('.product-img');
+        allImages.forEach(img => {
+            // 避免重复绑定
+            if (img.getAttribute('data-listener') === 'true') return;
+            img.setAttribute('data-listener', 'true');
+            img.addEventListener('click', (e) => {
+                e.stopPropagation();  // 防止冒泡到其他事件
+                const imgSrc = img.getAttribute('src');
+                if (imgSrc) {
+                    showFullImage(imgSrc);
+                }
+            });
+        });
+    }
+
     // 渲染商品卡片
     function renderProducts(category) {
         const container = document.getElementById('productsContainer');
@@ -496,6 +579,9 @@
                 alert(`【${name}】 价格: ¥${price}\n\n请添加QQ客服: 3662269122 获取微信赞赏码进行支付。\n支付完成后请发送截图给客服，客服核对后发货。\n\n虚拟商品不退款，下单前请确认。`);
             });
         });
+        
+        // 新卡片渲染完成后，给所有物资图片添加点击放大事件（以及已自带hover缩放css）
+        bindImageClick();
     }
 
     // 分类切换
@@ -523,6 +609,16 @@
     const chatSupport = document.getElementById('chatSupportBtn');
     chatSupport.addEventListener('click', () => {
         alert("💬 在线咨询时间: 3:40-22:30\n如需即时帮助请直接添加QQ:3662269122 留言，客服会尽快回复。\n所有商品仅支持微信支付，请向客服索取赞赏码。");
+    });
+
+    // 模态框点击关闭：点击背景或图片区域都可关闭（因为模态框本身有点击事件）
+    imageModal.addEventListener('click', (e) => {
+        // 点击任何地方都关闭（包括背景或图片）
+        hideFullImage();
+    });
+    // 阻止图片上的点击冒泡影响（防止重复关闭无影响，但已统一关闭）
+    fullscreenImage.addEventListener('click', (e) => {
+        e.stopPropagation(); // 不影响关闭，但确保不会误触，由于父级关闭，无需特殊处理
     });
 
     // 初始化加载 CFG 分类
