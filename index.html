@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>土豆's 2b2t shop</title>
+    <title>土豆的2B2T小卖部</title>
     <link rel="icon" type="image/png" href="images/icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -181,7 +181,7 @@
         }
         /* 鼠标悬停时图片轻微放大 */
         .product-img:hover {
-            transform: scale(1.08);
+            transform: scale(1.7891);
         }
         .product-title {
             font-size: 1.2rem;
@@ -360,10 +360,10 @@
                 <li data-cat="supplies"><i class="fas fa-boxes"></i> 2b2t.xin物资</li>
             </ul>
             <div class="sub-brand">
-                <div class="category-title"><i class="fas fa-store"></i> 土豆自营专区</div>
+                <div class="category-title"><i class="fas fa-store"></i> 不知道写什么</div>
                 <ul class="cat-list">
-                    <li><i class="fas fa-seedling"></i> P0T4T0官方店</li>
-                    <li><i class="fas fa-tachometer-alt"></i> 2b2t.xin专供</li>
+                    <li><i class="fas fa-seedling"></i> EZZZZZZZZZ</li>
+                    <li><i class="fas fa-tachometer-alt"></i> EZZZZZZZZZZ</li>
                 </ul>
             </div>
         </div>
@@ -372,13 +372,13 @@
         <div class="content-area">
             <div class="breadcrumb">
                 <i class="fas fa-home"></i> 首页 / <span id="currentCatName">2B2T CFG</span>
-                <span style="float: right; font-size: 0.75rem;"><i class="fab fa-weixin"></i> 微信支付·联系客服获取赞赏码</span>
+                <span style="float: right; font-size: 0.75rem;"><i class="fab fa-weixin"></i> 微信支付·联系客服获取付款码</span>
             </div>
             <div id="productsContainer" class="products-grid">
                 <!-- 动态商品卡片 -->
             </div>
             <div style="margin-top: 32px; text-align: center; border-top: 1px solid #ecf3fa; padding-top: 20px; font-size:0.8rem">
-                <i class="fab fa-qq"></i> 联系客服QQ:3662269122  |  微信支付唯一渠道，请加QQ索取赞赏码，支付后截图发货
+                <i class="fab fa-qq"></i> 联系客服QQ:3662269122  |  微信支付唯一渠道，请加客服QQ要付款码，支付后截图发货
             </div>
         </div>
     </div>
@@ -414,10 +414,20 @@
             name: "P0T4T0 CFG V2", 
             category: "cfg", 
             price: 30, 
-            desc: "针对于2b2t.xin等NCP服务器的顶级参数。需要AlienV4和Mio Client运作。强大的水晶+WebSync，极致视觉优化, 和强力重锤!", 
-            badges: ["NCP", "AlienV4", "Mio"], 
+            desc: "针对于2b2t.xin等NCP服务器的顶级参数。需要AlienV4和Mio来使用此参数。强大的水晶+WebSync，极致视觉优化, 和强力重锤!", 
+            badges: ["NCP", "AlienV4", "Mio", "2b2t.xin", "极品"], 
+            useIcon: false, 
+            image: "images/icon.png" 
+        },
+        { 
+            id: 2, 
+            name: "MXADDON客户端", 
+            category: "cfg", 
+            price: 85, 
+            desc: "基于AlienV4的客户端 拥有2b2t.xin服务器的最强重锤模块!!!", 
+            badges: ["NCP", "AlienV4", "重锤", "2b2t.xin", "客户端"], 
             useIcon: true, 
-            icon: "fas fa-bolt" 
+            icon: "fa fas-bolt" 
         },
         
         // ---------- 2b2t.xin物资分类（使用本地图片，图片请放入 images 文件夹）----------
@@ -577,7 +587,7 @@
             btn.addEventListener('click', (e) => {
                 const name = btn.getAttribute('data-name');
                 const price = btn.getAttribute('data-price');
-                alert(`【${name}】 价格: ¥${price}\n\n请添加QQ客服: 3662269122 获取微信赞赏码进行支付。\n支付完成后请发送截图给客服，客服核对后发货。\n\n虚拟商品不退款，下单前请确认。`);
+                alert(`【${name}】 价格: ¥${price}\n\n请添加QQ客服: 3662269122 获取付款码进行支付。\n支付完成后请发送截图给客服，客服核对后发货。\n\n虚拟商品不退款，下单前请确认。`);
             });
         });
         
@@ -603,13 +613,13 @@
     // QQ客服悬浮按钮
     const qqBtn = document.getElementById('qqContactBtn');
     qqBtn.addEventListener('click', () => {
-        alert("🐧 QQ客服: 3662269122\n请复制QQ号添加好友，备注“土豆shop购买”。\n支付通过微信赞赏码，请联系客服获取。");
+        alert("🐧 QQ客服: 3662269122\n请复制QQ号添加好友，备注“土豆shop购买”。\n支付通过微信，请联系客服获取。");
         window.open("tencent://message/?uin=3662269122&Site=土豆shop&Menu=yes");
     });
 
     const chatSupport = document.getElementById('chatSupportBtn');
     chatSupport.addEventListener('click', () => {
-        alert("💬 在线咨询时间: 3:40-22:30\n如需即时帮助请直接添加QQ:3662269122 留言，客服会尽快回复。\n所有商品仅支持微信支付，请向客服索取赞赏码。");
+        alert("💬 在线咨询时间: 3:40-22:30\n如需即时帮助请直接添加QQ:3662269122 留言，客服会尽快回复。\n所有商品仅支持微信支付，请向客服索取付款码。");
     });
 
     // 模态框点击关闭：点击背景或图片区域都可关闭（因为模态框本身有点击事件）
