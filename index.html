@@ -402,13 +402,13 @@
     // ============================================================
     // 商品数据配置区
     // 说明：
-    // - cfg 分类只有 P0T4T0 CFG V2（使用图标）
+    // - cfg 分类：P0T4T0 CFG V2、MXADDON客户端
     // - supplies 分类为物资商品（使用本地图片，存放在 images/ 文件夹下）
     // 更换图片：修改对应商品的 img 路径，例如 img: "images/你的图片.png"
     // ============================================================
     
     const productsData = [
-        // ---------- 2B2T CFG 分类：仅 P0T4T0 CFG V2（图标） ----------
+        // ---------- 2B2T CFG 分类 ----------
         { 
             id: 1, 
             name: "P0T4T0 CFG V2", 
@@ -432,13 +432,13 @@
         
         // ---------- 2b2t.xin物资分类（使用本地图片，图片请放入 images 文件夹）----------
         { 
-            id: 2, name: "鞘翅盒子", category: "supplies", price: 0.35, 
+            id: 3, name: "鞘翅盒子", category: "supplies", price: 0.35, 
             desc: "一盒满附魔鞘翅", 
             badges: ["飞行", "跑图"], useIcon: false, 
             img: "images/elytra.png" 
         },
         { 
-            id: 3, name: "土豆的CPVP补给", category: "supplies", price: 0.3, 
+            id: 4, name: "土豆的CPVP补给", category: "supplies", price: 0.3, 
             desc: "极品配置的cpvp补给kit", 
             badges: ["补给", "cpvp"], useIcon: false, 
             img: "images/cpvp.png" 
@@ -508,25 +508,25 @@
             desc: "Cdf的日常kit", 
             badges: ["日常", "装备"], useIcon: false, 
             img: "images/zhang.png" 
-        }
+        },
         { 
             id: 16, name: "附魔金kit", category: "supplies", price: 6, 
             desc: "附魔金苹果kit", 
             badges: ["食物", "补给"], useIcon: false, 
             img: "images/gap.png" 
-        }
+        },
         { 
             id: 17, name: "红石kit", category: "supplies", price: 6, 
             desc: "一堆红石玩应", 
             badges: ["红石", "建筑"], useIcon: false, 
             img: "images/redstone.png" 
-        }
+        },
         { 
             id: 18, name: "标准装备箱", category: "supplies", price: 6, 
             desc: "标准kit", 
             badges: ["装备", "补给"], useIcon: false, 
             img: "images/biaozhun.png" 
-        }
+        },
         { 
             id: 19, name: "图腾盒", category: "supplies", price: 6, 
             desc: "popgod's kit", 
